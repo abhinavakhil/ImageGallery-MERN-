@@ -71,26 +71,11 @@ router.get("/", (req, res, next) => {
   });
 });
 
-// router.get("data/:id", (req, res, next) => {
-//   const UserData = User.find((elt) => elt._id == req.params.id);
-
-//   if (UserData) {
-//     res.status(200).json({
-//       message: "Success",
-//       data: UserData,
-//     });
-//   } else {
-//     res.status(200).json({
-//       message: "error",
-//       data: null,
-//     });
-//   }
-// });
-
-router.get("data/:id", (req, res, next) => {
+router.get("/:id", (req, res, next) => {
   User.findById(req.params.id)
     .then((result) => {
       res.status(200).json({
+        message: "User with id",
         user: result,
       });
     })

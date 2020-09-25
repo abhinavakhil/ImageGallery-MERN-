@@ -28,12 +28,6 @@ class Home extends Component {
     });
   }
 
-  // handleImage(image) {
-  //   return function () {
-  //     console.log(image);
-  //   };
-  // }
-
   render() {
     return (
       <div className="App">

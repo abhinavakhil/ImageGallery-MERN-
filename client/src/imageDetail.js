@@ -17,24 +17,23 @@ class ImageDetails extends Component {
   };
 
   componentDidMount() {
-    this.parseQueryParams();
-  }
-
-  parseQueryParams() {
+    // this.parseQueryParams();
     const query = this.props.match.params.value;
     console.log(query);
     //console.log(`/api/data/${query}`);
-    axios.get(`/api/data/${query}`).then((res) => {
-      // console.log(res.data.imageData.length);
-      // let userData = res.data.imageData;
-      // for (var i = 0; i < res.data.imageData.length; i++) {
-      //   if (query == userData[i]._id) {
-      //     this.setState({ data: userData[i] });
-      //     console.log(userData[i]._id);
-      //   }
+    axios.get(`/api/${query}`).then((res) => {
       console.log(res);
     });
   }
+
+  // parseQueryParams() {
+  //   const query = this.props.match.params.value;
+  //   console.log(query);
+  //   //console.log(`/api/data/${query}`);
+  //   axios.get(`/api/${query}`).then((res) => {
+  //     console.log(res);
+  //   });
+  // }
 
   render() {
     return (
