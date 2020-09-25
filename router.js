@@ -43,7 +43,7 @@ router.post("/image-upload", upload.single("image"), (req, res, next) => {
   const user = new User({
     imageName: req.body.imageName,
     userName: req.body.userName,
-    image: "http://192.168.0.7:3000/images/" + req.file.filename,
+    image: "localohost:3000/images/" + req.file.filename,
     lat: req.body.lat,
     long: req.body.long,
   });
