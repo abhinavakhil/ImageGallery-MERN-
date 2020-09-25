@@ -8,8 +8,8 @@ class FileUpload extends Component {
     imageName: "",
     userName: "",
     image: "",
-    lat: Number,
-    long: Number,
+    lat: "",
+    long: "",
   };
 
   componentDidMount() {
