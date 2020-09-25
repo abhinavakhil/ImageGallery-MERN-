@@ -1,8 +1,7 @@
 const express = require("express");
 const multer = require("multer");
-const path = require("path");
-
-// const { v4: uuidv4 } = require("uuid");
+const mongoose = require("mongoose");
+const { v4: uuidv4 } = require("uuid");
 const router = express.Router();
 
 const User = require("./userModel");
@@ -14,10 +13,8 @@ const storage = multer.diskStorage({
     cb(null, DIR);
   },
   filename: (req, file, cb) => {
-    cb(
-      null,
-      `${file.filename}_${Date.now()}${path.extname(file.originalname)}`
-    );
+    const fileName = file.originalname.toLowerCase().split(" ").join("-");
+    cb(null, uuidv4() + "-" + fileName);
   },
 });
 
@@ -37,13 +34,12 @@ var upload = multer({
   },
 });
 
-app.use("/profile", express.static("/public"));
-
 router.post("/image-upload", upload.single("image"), (req, res, next) => {
+  const url = req.protocol + "://" + req.get("host");
   const user = new User({
     imageName: req.body.imageName,
     userName: req.body.userName,
-    image: `http://localhost:5000/profile/${req.file.filename}`,
+    image: url + "/public/" + req.file.filename,
     lat: req.body.lat,
     long: req.body.long,
   });
