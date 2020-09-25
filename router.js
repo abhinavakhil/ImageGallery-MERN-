@@ -1,7 +1,8 @@
 const express = require("express");
 const multer = require("multer");
+const path = require("path");
 
-const { v4: uuidv4 } = require("uuid");
+// const { v4: uuidv4 } = require("uuid");
 const router = express.Router();
 
 const User = require("./userModel");
@@ -24,9 +25,9 @@ const storage = multer.diskStorage({
 var upload = multer({
   storage: storage,
   fileFilter: (req, file, cb) => {
-    const extname = filetypes.test(
-      path.extname(file.originalname).toLowerCase()
-    );
+    // const extname = filetypes.test(
+    //   path.extname(file.originalname).toLowerCase()
+    // );
     if (
       file.mimetype == "image/png" ||
       file.mimetype == "image/jpg" ||
