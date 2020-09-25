@@ -28,10 +28,9 @@ var upload = multer({
       path.extname(file.originalname).toLowerCase()
     );
     if (
-      (file.mimetype == "image/png" ||
-        file.mimetype == "image/jpg" ||
-        file.mimetype == "image/jpeg") &&
-      extname
+      file.mimetype == "image/png" ||
+      file.mimetype == "image/jpg" ||
+      file.mimetype == "image/jpeg"
     ) {
       cb(null, true);
     } else {
@@ -45,9 +44,6 @@ router.post("/image-upload", upload.single("image"), (req, res, next) => {
   //const url = req.protocol + "://" + req.get("host");
   const user = new User({
     imageName: req.body.imageName,
-    // height: req.body.height,
-    // width: req.body.width,
-    // extension: req.body.width,
     userName: req.body.userName,
     image: `uploads/${req.file.filename}`,
     lat: req.body.lat,
