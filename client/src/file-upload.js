@@ -46,7 +46,7 @@ class FileUpload extends Component {
         long: "",
       });
     } catch (err) {
-      alert("Something Wrong Happened!");
+      alert("Something Wrong Happened!", err);
     }
   };
 
