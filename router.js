@@ -90,19 +90,16 @@ router.get("/", (req, res, next) => {
 router.get("data/:id", (req, res, next) => {
   const _id = req.params.id;
 
-  const user = User.findById(_id);
-  console.log(req.params.id);
-  if (!user) {
-    res.status(404).json({
-      message: "error",
-    });
-  } else {
-    console.log(user);
-    res.status(201).json({
-      message: "Success",
-      data: user,
-    });
-  }
+  User.findById(_id, (error, result) => {
+    if (error) {
+      console.log(error);
+    } else {
+      res.status(201).json({
+        message: "error",
+        data: result,
+      });
+    }
+  });
 });
 
 module.exports = router;

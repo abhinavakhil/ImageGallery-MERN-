@@ -32,7 +32,7 @@ class ImageDetails extends Component {
       //     this.setState({ data: userData[i] });
       //     console.log(userData[i]._id);
       //   }
-      console.log(res.data);
+      console.log(res);
     });
   }
 
