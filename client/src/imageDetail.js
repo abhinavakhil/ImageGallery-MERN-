@@ -23,7 +23,7 @@ class ImageDetails extends Component {
   parseQueryParams() {
     const query = this.props.match.params.value;
     console.log(query);
-    axios.get(`/api/${query}`).then((res) => {
+    axios.get(`/api/data/${query}`).then((res) => {
       // console.log(res.data.imageData.length);
       // let userData = res.data.imageData;
       // for (var i = 0; i < res.data.imageData.length; i++) {

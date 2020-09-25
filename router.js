@@ -71,7 +71,7 @@ router.get("/", (req, res, next) => {
   });
 });
 
-router.get("/:id", (req, res, next) => {
+router.get("data/:id", (req, res, next) => {
   const UserData = User.find((elt) => elt._id == req.params.id);
 
   if (UserData) {
@@ -80,7 +80,10 @@ router.get("/:id", (req, res, next) => {
       data: UserData,
     });
   } else {
-    res.sendStatus(400);
+    res.status(200).json({
+      message: "error",
+      data: null,
+    });
   }
 });
 
