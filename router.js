@@ -30,14 +30,13 @@ var upload = multer({
     if (
       (file.mimetype == "image/png" ||
         file.mimetype == "image/jpg" ||
-        file.mimetype == "image/jpeg" ||
-        file.mimetype == "image/gif") &&
+        file.mimetype == "image/jpeg") &&
       extname
     ) {
       cb(null, true);
     } else {
       cb(null, false);
-      return cb(new Error("Only .png, .jpg .gif and .jpeg format allowed!"));
+      return cb(new Error("Only .png, .jpg and .jpeg format allowed!"));
     }
   },
 });
