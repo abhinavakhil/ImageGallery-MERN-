@@ -59,7 +59,7 @@ class ImageDetails extends Component {
           </Popup>
         ) : (
           <div>
-            <img src={Image} height="100%" width="100%" />
+            <img src={this.state.image} height="100%" width="100%" />
           </div>
         )}
       </Map>
