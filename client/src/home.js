@@ -28,6 +28,10 @@ class Home extends Component {
     });
   }
 
+  handleImage(image) {
+    console.log(image);
+  }
+
   render() {
     return (
       <div className="App">
@@ -53,7 +57,9 @@ class Home extends Component {
                       {img.imageName.toUpperCase()}
                     </CardTitle>
                     <Link to={`/imageDetail/${img.lat},${img.long}`}>
-                      <Button>View on Map</Button>
+                      <Button onClick={() => this.handleImage(img.image)}>
+                        View on Map
+                      </Button>
                     </Link>
                   </CardBody>
                 </Card>
