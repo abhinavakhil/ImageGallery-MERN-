@@ -43,6 +43,15 @@ app.use("/public", express.static("public"));
 
 app.use("/api", api);
 
+if (process.env.NODE_ENV === "production") {
+  // Set static folder
+  app.use(express.static("client/build"));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
+
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
@@ -59,4 +68,12 @@ app.use(function (err, req, res, next) {
   console.error(err.message);
   if (!err.statusCode) err.statusCode = 500;
   res.status(err.statusCode).send(err.message);
+});
+
+process.on("unhandledRejection", (err) => {
+  console.log(err.name, err.message);
+  console.log("UNHANDLED REJECTION! shudding down..");
+  ServiceWorkerRegistration.close(() => {
+    process.exit(1);
+  });
 });
