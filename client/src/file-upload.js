@@ -6,9 +6,6 @@ import "./file-upload.css";
 class FileUpload extends Component {
   state = {
     imageName: "",
-    height: "",
-    width: "",
-    extension: "",
     userName: "",
     image: "",
     lat: Number,
@@ -31,9 +28,6 @@ class FileUpload extends Component {
 
     const formData = new FormData();
     formData.append("imageName", this.state.imageName);
-    //formData.append("height", this.state.height);
-    //formData.append("width", this.state.width);
-    //formData.append("extension", this.state.extension);
     formData.append("userName", this.state.userName);
     formData.append("image", this.state.image);
     formData.append("lat", this.state.lat);
