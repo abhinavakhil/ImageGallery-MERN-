@@ -11,33 +11,41 @@ class FileUpload extends Component {
     extension: "",
     userName: "",
     image: "",
-    lat: "",
-    long: "",
+    lat: Number,
+    long: Number,
   };
+
+  componentDidMount() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.setState({
+          lat: position.coords.latitude,
+          long: position.coords.longitude,
+        });
+      });
+    }
+  }
 
   onSubmit = async (event) => {
     event.preventDefault();
 
     const formData = new FormData();
     formData.append("imageName", this.state.imageName);
-    formData.append("height", this.state.height);
-    formData.append("width", this.state.width);
-    formData.append("extension", this.state.extension);
+    //formData.append("height", this.state.height);
+    //formData.append("width", this.state.width);
+    //formData.append("extension", this.state.extension);
     formData.append("userName", this.state.userName);
     formData.append("image", this.state.image);
     formData.append("lat", this.state.lat);
     formData.append("long", this.state.long);
 
     try {
-      await axios.post("/api/image-upload", formData, {}).then((res) => {
+      await axios.post("api/image-upload", formData, {}).then((res) => {
         alert("Image Uploaded Successfully!");
       });
 
       this.setState({
         imageName: "",
-        height: "",
-        width: "",
-        extension: "",
         userName: "",
         image: "",
         lat: "",
@@ -69,44 +77,7 @@ class FileUpload extends Component {
                     required
                   />
                 </div>
-                <div className="row">
-                  <div className="form-group col-md-6">
-                    <input
-                      type="number"
-                      placeholder="Enter Height of Image"
-                      className="form-control"
-                      value={this.state.height}
-                      onChange={(event) =>
-                        this.setState({ height: event.target.value })
-                      }
-                      required
-                    />
-                  </div>
-                  <div className="form-group col-md-6">
-                    <input
-                      type="number"
-                      placeholder="Enter Width of Image"
-                      className="form-control "
-                      value={this.state.width}
-                      onChange={(event) =>
-                        this.setState({ width: event.target.value })
-                      }
-                      required
-                    />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="Enter Image Extensio, Only .png, .jpg and .jpeg format allowed!"
-                    className="form-control"
-                    value={this.state.extension}
-                    onChange={(event) =>
-                      this.setState({ extension: event.target.value })
-                    }
-                    required
-                  />
-                </div>
+
                 <div className="form-group">
                   <input
                     type="text"
@@ -133,33 +104,6 @@ class FileUpload extends Component {
                     />
                   </label>
                 </div>
-                <div className="row">
-                  <div className="form-group col-md-6">
-                    <input
-                      type="text"
-                      placeholder="Enter latitude"
-                      className="form-control"
-                      value={this.state.lat}
-                      onChange={(event) =>
-                        this.setState({ lat: event.target.value })
-                      }
-                      required
-                    />
-                  </div>
-                  <div className="form-group col-md-6">
-                    <input
-                      type="text"
-                      placeholder="Enter longitude"
-                      className="form-control"
-                      value={this.state.long}
-                      onChange={(event) =>
-                        this.setState({ long: event.target.value })
-                      }
-                      required
-                    />
-                  </div>
-                </div>
-
                 <div className="form-group">
                   <button className="btn btn-danger btn-block">Upload</button>
                 </div>
