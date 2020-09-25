@@ -87,14 +87,17 @@ router.get("/", (req, res, next) => {
 //   }
 // });
 
-router.get("data/:id", async (req, res, next) => {
-  const user = await User.findById(mongoose.Types.ObjectId(req.params.id));
+router.get("data/:id", (req, res, next) => {
+  const _id = req.params.id;
 
+  const user = User.findById(_id);
+  console.log(req.params.id);
   if (!user) {
     res.status(404).json({
       message: "error",
     });
   } else {
+    console.log(user);
     res.status(201).json({
       message: "Success",
       data: user,

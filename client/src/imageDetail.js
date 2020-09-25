@@ -23,6 +23,7 @@ class ImageDetails extends Component {
   parseQueryParams() {
     const query = this.props.match.params.value;
     console.log(query);
+    //console.log(`/api/data/${query}`);
     axios.get(`/api/data/${query}`).then((res) => {
       // console.log(res.data.imageData.length);
       // let userData = res.data.imageData;
@@ -31,7 +32,7 @@ class ImageDetails extends Component {
       //     this.setState({ data: userData[i] });
       //     console.log(userData[i]._id);
       //   }
-      console.log(res);
+      console.log(res.data);
     });
   }
 
