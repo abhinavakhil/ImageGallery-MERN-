@@ -29,6 +29,8 @@ class ImageDetails extends Component {
     let location = query.split(",");
 
     this.setState({ lat: location[0], long: location[1], img: location[2] });
+
+    console.log(this.state.img);
   }
 
   render() {

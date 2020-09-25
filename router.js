@@ -42,7 +42,7 @@ router.post("/image-upload", upload.single("image"), (req, res, next) => {
     width: req.body.width,
     extension: req.body.width,
     userName: req.body.userName,
-    image: "/public/" + req.file.filename,
+    image: "public/" + req.file.filename,
     lat: req.body.lat,
     long: req.body.long,
   });
