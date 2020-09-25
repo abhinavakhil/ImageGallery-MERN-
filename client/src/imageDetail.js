@@ -41,12 +41,15 @@ class ImageDetails extends Component {
           height: "100vh",
           width: "100%",
         }}
-        center={[this.state.data.lat, this.state.data.long]}
+        center={[Number(this.state.data.lat), Number(this.state.data.long)]}
         zoom={[1]}
       >
         {this.state.loading ? (
           <Popup
-            coordinates={[this.state.data.lat, this.state.data.long]}
+            coordinates={[
+              Number(this.state.data.lat),
+              Number(this.state.data.long),
+            ]}
             offset={{
               "bottom-left": [12, -38],
               bottom: [0, -38],
