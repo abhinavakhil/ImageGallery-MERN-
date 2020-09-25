@@ -51,15 +51,15 @@ class ImageDetails extends Component {
               "bottom-right": [-12, -38],
             }}
           >
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"
-              height="100px"
-              width="100px"
-            />
+            <img src={this.state.image} height="100px" width="100px" />
           </Popup>
         ) : (
           <div>
-            <img src={this.state.image} height="100%" width="100%" />
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"
+              height="100%"
+              width="100%"
+            />
           </div>
         )}
       </Map>
