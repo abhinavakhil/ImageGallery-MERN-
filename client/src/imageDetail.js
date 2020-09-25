@@ -30,7 +30,11 @@ class ImageDetails extends Component {
     let longitude = this.state.long ? this.state.long : DEFAULT_LONG;
     let latitude = this.state.lat ? this.state.lat : DEFAULT_LAT;
     return (
-      <Map center={[longitude, latitude]} zoom={13}>
+      <Map
+        center={[longitude, latitude]}
+        zoom={13}
+        className="leaflet-container"
+      >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
