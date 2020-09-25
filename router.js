@@ -71,4 +71,17 @@ router.get("/", (req, res, next) => {
   });
 });
 
+router.get("/:id", (req, res, next) => {
+  const UserData = User.find((elt) => elt._id == req.params.id);
+
+  if (UserData) {
+    res.status(200).json({
+      message: "Success",
+      data: UserData,
+    });
+  } else {
+    res.sendStatus(400);
+  }
+});
+
 module.exports = router;

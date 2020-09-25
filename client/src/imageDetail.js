@@ -27,7 +27,7 @@ class ImageDetails extends Component {
       console.log(res.data.imageData.length);
       let userData = res.data.imageData;
       for (var i = 0; i < res.data.imageData.length; i++) {
-        if (query === userData[i]._id) {
+        if (query == userData[i]._id) {
           this.setState({ data: userData[i] });
           console.log(userData[i]._id);
         }
