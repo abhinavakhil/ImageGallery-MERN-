@@ -8,7 +8,7 @@ const path = require("path");
 
 const app = express();
 
-const api = require("../server/router");
+const api = require("./router");
 
 mongoose.Promise = global.Promise;
 
