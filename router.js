@@ -14,7 +14,7 @@ const storage = multer.diskStorage({
     cb(null, DIR);
   },
   filename: (req, file, cb) => {
-    // const fileName = file.originalname.toLowerCase().split(" ").join("-");
+    const ext = file.mimetype.split("/")[1];
     cb(
       null,
       file.fieldname + "-" + Date.now() + path.extname(file.originalname)
@@ -25,9 +25,6 @@ const storage = multer.diskStorage({
 var upload = multer({
   storage: storage,
   fileFilter: (req, file, cb) => {
-    // const extname = filetypes.test(
-    //   path.extname(file.originalname).toLowerCase()
-    // );
     if (
       file.mimetype == "image/png" ||
       file.mimetype == "image/jpg" ||
@@ -46,7 +43,7 @@ router.post("/image-upload", upload.single("image"), (req, res, next) => {
   const user = new User({
     imageName: req.body.imageName,
     userName: req.body.userName,
-    image: `uploads/${req.file.filename}`,
+    image: "http://192.168.0.7:3000/images/" + req.file.filename,
     lat: req.body.lat,
     long: req.body.long,
   });
