@@ -53,7 +53,9 @@ class Home extends Component {
                     >
                       {img.imageName.toUpperCase()}
                     </CardTitle>
-                    <Link to={`/imageDetail/${img.lat},${img.long}`}>
+                    <Link
+                      to={`/imageDetail/${img.lat},${img.long},${img.image}`}
+                    >
                       <Button>View on Map</Button>
                     </Link>
                   </CardBody>
