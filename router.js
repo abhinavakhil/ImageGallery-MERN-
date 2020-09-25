@@ -71,20 +71,35 @@ router.get("/", (req, res, next) => {
   });
 });
 
-router.get("data/:id", (req, res, next) => {
-  const UserData = User.find((elt) => elt._id == req.params.id);
+// router.get("data/:id", (req, res, next) => {
+//   const UserData = User.find((elt) => elt._id == req.params.id);
 
-  if (UserData) {
-    res.status(200).json({
-      message: "Success",
-      data: UserData,
-    });
-  } else {
-    res.status(200).json({
-      message: "error",
-      data: null,
-    });
-  }
+//   if (UserData) {
+//     res.status(200).json({
+//       message: "Success",
+//       data: UserData,
+//     });
+//   } else {
+//     res.status(200).json({
+//       message: "error",
+//       data: null,
+//     });
+//   }
+// });
+
+router.get("data/:id", (req, res, next) => {
+  User.findById(req.params.id, (err, data) => {
+    if (err) {
+      res.status(401).json({
+        message: "error",
+      });
+    } else {
+      res.status(200).json({
+        message: "Success",
+        data: data,
+      });
+    }
+  });
 });
 
 module.exports = router;
