@@ -30,7 +30,7 @@ class ImageDetails extends Component {
 
     this.setState({ lat: location[0], long: location[1], img: location[2] });
 
-    console.log(this.state.img);
+    console.log(this.state.img, location[2]);
   }
 
   render() {

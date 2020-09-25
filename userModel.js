@@ -6,8 +6,8 @@ const userSchema = new mongoose.Schema({
   image: {
     type: String,
   },
-  lat: String,
-  long: String,
+  lat: Number,
+  long: Number,
 });
 
 const User = mongoose.model("User", userSchema);

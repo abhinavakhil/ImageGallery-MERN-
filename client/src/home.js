@@ -17,7 +17,6 @@ import "./home.css";
 class Home extends Component {
   state = {
     data: [],
-    lat: "",
   };
 
   componentDidMount() {
