@@ -29,11 +29,9 @@ class FileUpload extends Component {
     formData.append("long", this.state.long);
 
     try {
-      await axios
-        .post("http://localhost:5000/api/image-upload", formData, {})
-        .then((res) => {
-          alert("Image Uploaded Successfully!");
-        });
+      await axios.post("/api/image-upload", formData, {}).then((res) => {
+        alert("Image Uploaded Successfully!");
+      });
 
       this.setState({
         imageName: "",

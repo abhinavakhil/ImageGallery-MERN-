@@ -21,7 +21,7 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    axios.get("http://localhost:5000/api").then((res) => {
+    axios.get("/api").then((res) => {
       console.log(res.data.imageData);
       let userData = res.data.imageData;
       this.setState({ data: userData });
