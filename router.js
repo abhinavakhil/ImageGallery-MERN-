@@ -87,19 +87,19 @@ router.get("/", (req, res, next) => {
 //   }
 // });
 
-router.get("data/:id", (req, res, next) => {
-  User.findById(req.params.id, (err, data) => {
-    if (err) {
-      res.status(401).json({
-        message: "error",
-      });
-    } else {
-      res.status(200).json({
-        message: "Success",
-        data: data,
-      });
-    }
-  });
+router.get("data/:id", async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+
+  if (!user) {
+    res.status(404).json({
+      message: "error",
+    });
+  } else {
+    res.status(201).json({
+      message: "Success",
+      data: user,
+    });
+  }
 });
 
 module.exports = router;
