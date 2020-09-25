@@ -1,6 +1,6 @@
 const express = require("express");
 const multer = require("multer");
-const mongoose = require("mongoose");
+
 const { v4: uuidv4 } = require("uuid");
 const router = express.Router();
 
@@ -13,23 +13,31 @@ const storage = multer.diskStorage({
     cb(null, DIR);
   },
   filename: (req, file, cb) => {
-    const fileName = file.originalname.toLowerCase().split(" ").join("-");
-    cb(null, uuidv4() + "-" + fileName);
+    // const fileName = file.originalname.toLowerCase().split(" ").join("-");
+    cb(
+      null,
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+    );
   },
 });
 
 var upload = multer({
   storage: storage,
   fileFilter: (req, file, cb) => {
+    const extname = filetypes.test(
+      path.extname(file.originalname).toLowerCase()
+    );
     if (
-      file.mimetype == "image/png" ||
-      file.mimetype == "image/jpg" ||
-      file.mimetype == "image/jpeg"
+      (file.mimetype == "image/png" ||
+        file.mimetype == "image/jpg" ||
+        file.mimetype == "image/jpeg" ||
+        file.mimetype == "image/gif") &&
+      extname
     ) {
       cb(null, true);
     } else {
       cb(null, false);
-      return cb(new Error("Only .png, .jpg and .jpeg format allowed!"));
+      return cb(new Error("Only .png, .jpg .gif and .jpeg format allowed!"));
     }
   },
 });
@@ -42,7 +50,7 @@ router.post("/image-upload", upload.single("image"), (req, res, next) => {
     width: req.body.width,
     extension: req.body.width,
     userName: req.body.userName,
-    image: "public/" + req.file.filename,
+    image: `uploads/${req.file.filename}`,
     lat: req.body.lat,
     long: req.body.long,
   });
