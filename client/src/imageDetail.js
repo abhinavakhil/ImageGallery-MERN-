@@ -13,10 +13,14 @@ class ImageDetails extends Component {
     lat: 0,
     long: 0,
     loading: false,
+    image: "",
   };
 
   componentDidMount() {
     this.parseQueryParams();
+    let image = localStorage.getItem("Image");
+    this.setState({ image: image });
+    console.log(image);
   }
 
   parseQueryParams() {
@@ -55,11 +59,7 @@ class ImageDetails extends Component {
           </Popup>
         ) : (
           <div>
-            <img
-              src="https://www.elegantthemes.com/blog/wp-content/uploads/2019/10/loading-screen-featured-image.jpg"
-              height="100%"
-              width="100%"
-            />
+            <img src={Image} height="100%" width="100%" />
           </div>
         )}
       </Map>

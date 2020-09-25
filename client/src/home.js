@@ -29,7 +29,10 @@ class Home extends Component {
   }
 
   handleImage(image) {
-    console.log(image);
+    return function () {
+      console.log(image);
+      localStorage.setItem("Image", image);
+    };
   }
 
   render() {
