@@ -14,10 +14,9 @@ const storage = multer.diskStorage({
     cb(null, DIR);
   },
   filename: (req, file, cb) => {
-    const ext = file.mimetype.split("/")[1];
     cb(
       null,
-      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+      `${file.filename}_${Date.now()}${path.extname(file.originalname)}`
     );
   },
 });
@@ -38,12 +37,13 @@ var upload = multer({
   },
 });
 
+app.use("/profile", express.static("/public"));
+
 router.post("/image-upload", upload.single("image"), (req, res, next) => {
-  //const url = req.protocol + "://" + req.get("host");
   const user = new User({
     imageName: req.body.imageName,
     userName: req.body.userName,
-    image: "localhost:3000/images/" + req.file.filename,
+    image: `http://localhost:5000/profile/${req.file.filename}`,
     lat: req.body.lat,
     long: req.body.long,
   });
