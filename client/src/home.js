@@ -31,7 +31,6 @@ class Home extends Component {
   // handleImage(image) {
   //   return function () {
   //     console.log(image);
-  //     localStorage.setItem("Image", image);
   //   };
   // }
 
@@ -59,8 +58,8 @@ class Home extends Component {
                     >
                       {img.imageName.toUpperCase()}
                     </CardTitle>
-                    <Link to={`/imageDetail/${img.lat},${img.long}`}>
-                      <Button setImage={img.image}>View on Map</Button>
+                    <Link to={`/imageDetail/${img._id}`}>
+                      <Button>View on Map</Button>
                     </Link>
                   </CardBody>
                 </Card>

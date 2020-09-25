@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactMapboxGl, { Layer, Feature, Marker, Popup } from "react-mapbox-gl";
-
+import axios from "axios";
 import "./imageDetail.css";
 
 const Map = ReactMapboxGl({
@@ -13,7 +13,7 @@ class ImageDetails extends Component {
     lat: 0,
     long: 0,
     loading: false,
-    image: "",
+    data: [],
   };
 
   componentDidMount() {
@@ -23,9 +23,15 @@ class ImageDetails extends Component {
   parseQueryParams() {
     const query = this.props.match.params.value;
     console.log(query);
-    let location = query.split(",");
-
-    this.setState({ lat: +location[0], long: +location[1], loading: true });
+    axios.get("/api").then((res) => {
+      console.log(res.data.imageData);
+      let userData = res.data.imageData;
+      for (var i = 0; i < res.data.imageData.length; i++) {
+        if (query === userData[i]._id) {
+          this.setState({ data: userData[i] });
+        }
+      }
+    });
   }
 
   render() {
