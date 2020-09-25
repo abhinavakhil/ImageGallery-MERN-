@@ -24,7 +24,7 @@ class ImageDetails extends Component {
     const query = this.props.match.params.value;
     console.log(query);
     axios.get("/api").then((res) => {
-      console.log(res.data.imageData);
+      console.log(res.data.imageData.length);
       let userData = res.data.imageData;
       for (var i = 0; i < res.data.imageData.length; i++) {
         if (query === userData[i]._id) {
