@@ -8,8 +8,8 @@ class FileUpload extends Component {
     imageName: "",
     userName: "",
     image: "",
-    lat: 0,
-    long: 0,
+    lat: "",
+    long: "",
   };
 
   componentDidMount() {
@@ -42,8 +42,8 @@ class FileUpload extends Component {
         imageName: "",
         userName: "",
         image: "",
-        lat: 0,
-        long: 0,
+        lat: "",
+        long: "",
       });
     } catch (err) {
       alert("Something Wrong Happened!", err);
