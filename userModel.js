@@ -9,8 +9,8 @@ const userSchema = new mongoose.Schema({
   image: {
     type: String,
   },
-  lat: Number,
-  long: Number,
+  lat: String,
+  long: String,
 });
 
 const User = mongoose.model("User", userSchema);
