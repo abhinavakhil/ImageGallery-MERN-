@@ -46,7 +46,7 @@ class ImageDetails extends Component {
           <div className="loading">Loading</div>
         ) : (
           <Marker position={[longitude, latitude]}>
-            <Popup>You are so awesome</Popup>
+            <Popup>You are awesome</Popup>
           </Marker>
         )}
       </Map>
