@@ -28,12 +28,12 @@ class Home extends Component {
     });
   }
 
-  handleImage(image) {
-    return function () {
-      console.log(image);
-      localStorage.setItem("Image", image);
-    };
-  }
+  // handleImage(image) {
+  //   return function () {
+  //     console.log(image);
+  //     localStorage.setItem("Image", image);
+  //   };
+  // }
 
   render() {
     return (
@@ -60,9 +60,7 @@ class Home extends Component {
                       {img.imageName.toUpperCase()}
                     </CardTitle>
                     <Link to={`/imageDetail/${img.lat},${img.long}`}>
-                      <Button onClick={() => this.handleImage(img.image)}>
-                        View on Map
-                      </Button>
+                      <Button setImage={img.image}>View on Map</Button>
                     </Link>
                   </CardBody>
                 </Card>

@@ -18,9 +18,6 @@ class ImageDetails extends Component {
 
   componentDidMount() {
     this.parseQueryParams();
-    let image = localStorage.getItem("Image");
-    this.setState({ image: image });
-    console.log(image);
   }
 
   parseQueryParams() {
@@ -51,7 +48,7 @@ class ImageDetails extends Component {
               "bottom-right": [-12, -38],
             }}
           >
-            <img src={this.state.image} height="100px" width="100px" />
+            <img src={this.props.setImage} height="100px" width="100px" />
           </Popup>
         ) : (
           <div>
