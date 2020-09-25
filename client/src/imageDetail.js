@@ -28,16 +28,16 @@ class ImageDetails extends Component {
     console.log(query);
     let location = query.split(",");
 
-    this.setState({ lat: location[0], long: location[1], img: location[2] });
+    this.setState({ lat: location[0], long: location[1] });
 
-    console.log(this.state.img, location[2]);
+    // console.log(this.state.img, location[2]);
   }
 
   render() {
     const longitude = this.state.long ? this.state.long : DEFAULT_LONG;
     const latitude = this.state.lat ? this.state.lat : DEFAULT_LAT;
     return (
-      <Map center={[longitude, latitude]} zoom={5}>
+      <Map center={[longitude, latitude]} zoom={13}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -46,9 +46,7 @@ class ImageDetails extends Component {
           <div className="loading">Loading</div>
         ) : (
           <Marker position={[longitude, latitude]}>
-            <Popup>
-              <img src={this.state.img} />
-            </Popup>
+            <Popup>You are so awesome</Popup>
           </Marker>
         )}
       </Map>
