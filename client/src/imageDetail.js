@@ -22,7 +22,8 @@ class ImageDetails extends Component {
     console.log(query);
     //console.log(`/api/data/${query}`);
     axios.get(`/api/${query}`).then((res) => {
-      console.log(res);
+      console.log(res.data.user);
+      this.setState({ data: res.data.user });
     });
   }
 
@@ -37,7 +38,7 @@ class ImageDetails extends Component {
 
   render() {
     return (
-      <div>{this.state.data}</div>
+      <div>{this.state.data.imageName}</div>
       // <Map
       //   style="mapbox://styles/mapbox/streets-v9"
       //   containerStyle={{
