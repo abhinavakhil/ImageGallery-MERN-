@@ -38,7 +38,7 @@ class FileUpload extends Component {
     formData.append("image", this.state.image);
     formData.append("lat", this.state.lat);
     formData.append("long", this.state.long);
-
+    console.log(this.state.lat, this.state.long);
     try {
       await axios.post("/api/image-upload", formData, {}).then((res) => {
         alert("Image Uploaded Successfully!");
