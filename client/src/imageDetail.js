@@ -10,9 +10,6 @@ const Map = ReactMapboxGl({
 
 class ImageDetails extends Component {
   state = {
-    lat: 0,
-    long: 0,
-    loading: false,
     data: [],
   };
 
@@ -38,37 +35,36 @@ class ImageDetails extends Component {
 
   render() {
     return (
-      <div>{this.state.data.imageName}</div>
-      // <Map
-      //   style="mapbox://styles/mapbox/streets-v9"
-      //   containerStyle={{
-      //     height: "100vh",
-      //     width: "100%",
-      //   }}
-      //   center={[77.1025, 28.7041]}
-      //   zoom={[1]}
-      // >
-      //   {this.state.loading ? (
-      //     <Popup
-      //       coordinates={[this.state.lat, this.state.long]}
-      //       offset={{
-      //         "bottom-left": [12, -38],
-      //         bottom: [0, -38],
-      //         "bottom-right": [-12, -38],
-      //       }}
-      //     >
-      //       <img src={this.props.setImage} height="100px" width="100px" />
-      //     </Popup>
-      //   ) : (
-      //     <div>
-      //       <img
-      //         src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"
-      //         height="100%"
-      //         width="100%"
-      //       />
-      //     </div>
-      //   )}
-      // </Map>
+      <Map
+        style="mapbox://styles/mapbox/streets-v9"
+        containerStyle={{
+          height: "100vh",
+          width: "100%",
+        }}
+        center={[this.state.data.lat, this.state.data.long]}
+        zoom={[1]}
+      >
+        {this.state.loading ? (
+          <Popup
+            coordinates={[this.state.data.lat, this.state.data.long]}
+            offset={{
+              "bottom-left": [12, -38],
+              bottom: [0, -38],
+              "bottom-right": [-12, -38],
+            }}
+          >
+            <img src={this.state.data.image} height="100px" width="100px" />
+          </Popup>
+        ) : (
+          <div>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"
+              height="100%"
+              width="100%"
+            />
+          </div>
+        )}
+      </Map>
     );
   }
 }
