@@ -88,18 +88,18 @@ router.get("/", (req, res, next) => {
 // });
 
 router.get("data/:id", (req, res, next) => {
-  const _id = req.params.id;
-
-  User.findById(_id, (error, result) => {
-    if (error) {
-      console.log(error);
-    } else {
-      res.status(201).json({
-        message: "error",
-        data: result,
+  User.findById(req.params.id)
+    .then((result) => {
+      res.status(200).json({
+        user: result,
       });
-    }
-  });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        error: err,
+      });
+    });
 });
 
 module.exports = router;
