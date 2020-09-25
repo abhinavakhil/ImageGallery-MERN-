@@ -1,0 +1,47 @@
+.main {
+  /* background-image: linear-gradient(to right, #232526, #414345);
+  /* background: rgba(0, 0, 0, 0.9); */
+  /* height: 100vh; */
+  /* color: #fff; */
+}
+
+.text {
+  font-size: 2.5rem;
+  line-height: 4rem;
+  letter-spacing: 0.125rem;
+  font-family: "Courier New", Courier, monospace;
+  color: #dc3545;
+}
+
+input {
+  padding: 0.25rem 0;
+  border: 0;
+  border-bottom: 1px solid #f9214a;
+  outline: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 3rem;
+  line-height: 4rem;
+  letter-spacing: 0.125rem;
+  transition: all 0.5s cubic-bezier(0.4, 0.25, 0.8, 0.3);
+}
+
+.btn-bs-file {
+  position: relative;
+}
+.btn-bs-file input[type="file"] {
+  position: absolute;
+  top: -9999999;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  width: 0;
+  height: 0;
+  outline: none;
+  cursor: inherit;
+}
+
+button {
+  line-height: 4rem;
+  letter-spacing: 0.125rem;
+  font-family: "Courier New", Courier, monospace;
+}
