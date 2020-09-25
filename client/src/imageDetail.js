@@ -1,16 +1,11 @@
 import React, { Component } from "react";
-// import ReactMapboxGl, { Layer, Feature, Marker } from "react-mapbox-gl";
+
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 
 import "./imageDetail.css";
 
 const DEFAULT_LONG = -123;
 const DEFAULT_LAT = 48;
-
-// const Map = ReactMapboxGl({
-//   accessToken:
-//     "pk.eyJ1Ijoid2l6YXJkY29kaW5nIiwiYSI6ImNrYXh6ejVzMDBiN3UyeG5pZHV3ZDl1eGUifQ.3yx5c45P8A1cmOSyycXugQ",
-// });
 
 class ImageDetails extends Component {
   state = {
@@ -27,26 +22,24 @@ class ImageDetails extends Component {
     const query = this.props.match.params.value;
     console.log(query);
     let location = query.split(",");
-
     this.setState({ lat: location[0], long: location[1] });
-
-    // console.log(this.state.img, location[2]);
+    console.log(this.state.long);
   }
 
   render() {
-    const longitude = this.state.long ? this.state.long : DEFAULT_LONG;
-    const latitude = this.state.lat ? this.state.lat : DEFAULT_LAT;
+    let longitude = this.state.long ? this.state.long : DEFAULT_LONG;
+    let latitude = this.state.lat ? this.state.lat : DEFAULT_LAT;
     return (
       <Map center={[longitude, latitude]} zoom={13}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         ></TileLayer>
-        {!(this.state.lang || this.state.long) ? (
+        {!this.state.lang ? (
           <div className="loading">Loading</div>
         ) : (
           <Marker position={[longitude, latitude]}>
-            <Popup>You are awesome</Popup>
+            <Popup>Nice</Popup>
           </Marker>
         )}
       </Map>
@@ -55,23 +48,3 @@ class ImageDetails extends Component {
 }
 
 export default ImageDetails;
-
-{
-  /* <Map
-        style="mapbox://styles/mapbox/streets-v9"
-        containerStyle={{
-          height: "100vh",
-          width: "100%",
-        }}
-        center={[77.1025, 28.7041]}
-        zoom={[1]}
-      >
-        <Marker coordinates={[this.state.lat, this.state.long]}>
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/f/f2/678111-map-marker-512.png"
-            height="30px"
-            width="30px"
-          />
-        </Marker>
-      </Map> */
-}

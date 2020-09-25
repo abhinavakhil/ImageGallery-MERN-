@@ -52,9 +52,7 @@ class Home extends Component {
                     >
                       {img.imageName.toUpperCase()}
                     </CardTitle>
-                    <Link
-                      to={`/imageDetail/${img.lat},${img.long},${img.image}`}
-                    >
+                    <Link to={`/imageDetail/${img.lat},${img.long}`}>
                       <Button>View on Map</Button>
                     </Link>
                   </CardBody>
@@ -69,21 +67,3 @@ class Home extends Component {
 }
 
 export default Home;
-
-{
-  /* <div className="row">
-          <div className="col-md-12">
-            {this.state.data.map((img) => (
-              <Link to={`/imageDetail/${img.lat},${img.long}`}>
-                <span key={img._id} className="thumbnail">
-                  <img
-                    src={img.image}
-                    alt="images"
-                    className="col-md-4 col-sm-6 item img-thumbnail"
-                  />
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div> */
-}
