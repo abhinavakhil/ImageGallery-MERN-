@@ -37,7 +37,6 @@ class ImageDetails extends Component {
   render() {
     return (
       <div>
-        {this.state.data.lng}
         {this.state.loading ? (
           <Map
             style="mapbox://styles/mapbox/streets-v9"
@@ -48,16 +47,20 @@ class ImageDetails extends Component {
             center={[this.state.data.lat, this.state.data.long]}
             zoom={[1]}
           >
-            <Popup
-              coordinates={[this.state.data.lat, this.state.data.long]}
-              offset={{
-                "bottom-left": [12, -38],
-                bottom: [0, -38],
-                "bottom-right": [-12, -38],
-              }}
-            >
-              <img src={this.state.data.image} height="100px" width="100px" />
-            </Popup>
+            {this.state.data.long ? (
+              <Popup
+                coordinates={[this.state.data.lat, this.state.data.long]}
+                offset={{
+                  "bottom-left": [12, -38],
+                  bottom: [0, -38],
+                  "bottom-right": [-12, -38],
+                }}
+              >
+                <img src={this.state.data.image} height="100px" width="100px" />
+              </Popup>
+            ) : (
+              <p>Null</p>
+            )}
           </Map>
         ) : (
           <div>Loading...</div>
