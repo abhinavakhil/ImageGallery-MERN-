@@ -56,7 +56,7 @@ class ImageDetails extends Component {
                   width="50px"
                 />
                 <Popup
-                  coordinates={[langitude, latitude]}
+                  coordinates={[25.0960742, 85.31311939999999]}
                   offset={{
                     "bottom-left": [12, -38],
                     // bottom: [0, -38],
@@ -75,7 +75,7 @@ class ImageDetails extends Component {
             )}
           </Map>
         ) : (
-          <div>Loading...</div>
+          <div className="text-align:center">Loading...</div>
         )}
       </div>
     );
@@ -83,7 +83,3 @@ class ImageDetails extends Component {
 }
 
 export default ImageDetails;
-
-{
-  /*  */
-}
