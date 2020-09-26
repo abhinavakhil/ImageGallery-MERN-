@@ -56,7 +56,7 @@ class ImageDetails extends Component {
                   width="50px"
                 />
                 <Popup
-                  coordinates={[85.3131193, 13.13751]}
+                  coordinates={[13.13751, 85.3131193]}
                   offset={{
                     "bottom-left": [12, -38],
                     // bottom: [0, -38],
@@ -65,8 +65,8 @@ class ImageDetails extends Component {
                 >
                   <img
                     src={this.state.data.image}
-                    height="100px"
-                    width="100px"
+                    height="250px"
+                    width="200px"
                   />
                 </Popup>
               </Marker>
