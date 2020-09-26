@@ -25,15 +25,6 @@ class ImageDetails extends Component {
     });
   }
 
-  // parseQueryParams() {
-  //   const query = this.props.match.params.value;
-  //   console.log(query);
-  //   //console.log(`/api/data/${query}`);
-  //   axios.get(`/api/${query}`).then((res) => {
-  //     console.log(res);
-  //   });
-  // }
-
   render() {
     return (
       <div>
@@ -47,7 +38,7 @@ class ImageDetails extends Component {
             center={[this.state.data.lat, this.state.data.long]}
             zoom={[1]}
           >
-            {this.state.data.long ? (
+            {this.state.loading ? (
               <Popup
                 coordinates={[this.state.data.lat, this.state.data.long]}
                 offset={{
