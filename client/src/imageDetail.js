@@ -56,7 +56,7 @@ class ImageDetails extends Component {
                   width="50px"
                 />
                 <Popup
-                  coordinates={[25.0960742, 85.31311939999999]}
+                  coordinates={[33.13751, 85.3131193]}
                   offset={{
                     "bottom-left": [12, -38],
                     // bottom: [0, -38],
