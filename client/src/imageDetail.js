@@ -50,12 +50,11 @@ class ImageDetails extends Component {
           >
             {this.state.loading ? (
               <Popup
-                coordinates={[latitude, langitude]}
-                offset={{
-                  "bottom-left": [12, -38],
-                  bottom: [0, -38],
-                  "bottom-right": [-12, -38],
-                }}
+                latitude={latitude}
+                longitude={langitude}
+                offsetTop={-30}
+                closeButton={true}
+                closeOnClick={false}
               >
                 <img src={this.state.data.image} height="100px" width="100px" />
               </Popup>
