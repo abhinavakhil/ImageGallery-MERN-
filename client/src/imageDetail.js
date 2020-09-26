@@ -45,11 +45,11 @@ class ImageDetails extends Component {
               height: "100vh",
               width: "100%",
             }}
-            center={[latitude, langitude]}
+            center={[langitude, latitude]}
             zoom={[1]}
           >
             {this.state.loading ? (
-              <Marker coordinates={[latitude, langitude]} anchor="bottom">
+              <Marker coordinates={[langitude, latitude]} anchor="bottom">
                 <img
                   src="https://www.iconfinder.com/data/icons/small-n-flat/24/map-marker-512.png"
                   height="100px"
