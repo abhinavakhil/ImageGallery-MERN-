@@ -38,7 +38,7 @@ class ImageDetails extends Component {
     return (
       <div>
         {this.state.data.lng}
-        {!this.state.data.lng ? (
+        {this.state.loading ? (
           <Map
             style="mapbox://styles/mapbox/streets-v9"
             containerStyle={{
