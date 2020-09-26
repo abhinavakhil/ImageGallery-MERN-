@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ReactMapboxGl, { Popup } from "react-mapbox-gl";
+import ReactMapboxGl, { Marker, Popup } from "react-mapbox-gl";
 
 import axios from "axios";
 import "./imageDetail.css";
@@ -49,16 +49,13 @@ class ImageDetails extends Component {
             zoom={[1]}
           >
             {this.state.loading ? (
-              <Popup
-                coordinates={[latitude, langitude]}
-                offset={{
-                  "bottom-left": [12, -38],
-                  // bottom: [0, -38],
-                  "bottom-right": [-12, -38],
-                }}
-              >
-                <img src={this.state.data.image} height="100px" width="100px" />
-              </Popup>
+              <Marker coordinates={[latitude, langitude]} anchor="bottom">
+                <img
+                  src="https://www.iconfinder.com/data/icons/small-n-flat/24/map-marker-512.png"
+                  height="100px"
+                  width="100px"
+                />
+              </Marker>
             ) : (
               <p>Null</p>
             )}
@@ -72,3 +69,16 @@ class ImageDetails extends Component {
 }
 
 export default ImageDetails;
+
+{
+  /* <Popup
+                coordinates={[latitude, langitude]}
+                offset={{
+                  "bottom-left": [12, -38],
+                  // bottom: [0, -38],
+                  "bottom-right": [-12, -38],
+                }}
+              >
+                <img src={this.state.data.image} height="100px" width="100px" />
+              </Popup> */
+}
