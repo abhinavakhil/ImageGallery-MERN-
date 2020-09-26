@@ -55,9 +55,9 @@ class FileUpload extends Component {
       <div className="container-fluid main">
         <div className="row">
           <div className="container">
-            <div className="col-md-12">
+            <div className="col-md-12" style={{ marginTop: "60px" }}>
               <form onSubmit={this.onSubmit}>
-                <h4 className="text-center mt-6 mb-5 text">Upload An Image</h4>
+                <h4 className="text-center mt-4 mb-5 text">Upload An Image</h4>
                 <div className="form-group">
                   <input
                     type="text"
