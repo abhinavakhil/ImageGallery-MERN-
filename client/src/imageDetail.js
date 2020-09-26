@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 //import ReactMapboxGl, { Layer, Feature, Marker, Popup } from "react-mapbox-gl";
-import { Map } from 'react-leaflet';
+import { Map, Popup, TileLayer, Marker } from "react-leaflet";
 
 import axios from "axios";
 import "./imageDetail.css";
-import { Popup, TileLayer } from "leaflet";
 
 // const Map = ReactMapboxGl({
 //   accessToken:
@@ -13,7 +12,6 @@ import { Popup, TileLayer } from "leaflet";
 
 const DEFAULT_LANGITUDE = -123;
 const DEFAULT_LATITUDE = 48;
-
 
 class ImageDetails extends Component {
   state = {
@@ -33,26 +31,28 @@ class ImageDetails extends Component {
   }
 
   render() {
-
-    const langitude = this.state.loading ? this.state.data.long : DEFAULT_LANGITUDE;
-    const latitude = this.state.loading ? this.state.data.lat : DEFAULT_LATITUDE;
+    const langitude = this.state.loading
+      ? this.state.data.long
+      : DEFAULT_LANGITUDE;
+    const latitude = this.state.loading
+      ? this.state.data.lat
+      : DEFAULT_LATITUDE;
     return (
       <div>
         {this.state.loading ? (
-          <Map center={[latitude,langitude]} zoom={13}>
-            <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'>
-            </TileLayer>
-            { !this.state.loading ?
-               <div className="loading">loading</div>
-               :
-               <Marker position={[latitude,langitude]} >
-                 <Popup>
-                   You are here!
-                 </Popup>
-               </Marker> 
-            }
+          <Map center={[latitude, langitude]} zoom={13}>
+            <TileLayer
+              url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            ></TileLayer>
+            {!this.state.loading ? (
+              <div className="loading">loading</div>
+            ) : (
+              <Marker position={[latitude, langitude]}>
+                <Popup>You are here!</Popup>
+              </Marker>
+            )}
           </Map>
-
         ) : (
           <div>Loading...</div>
         )}
@@ -63,9 +63,8 @@ class ImageDetails extends Component {
 
 export default ImageDetails;
 
-
-
-{/* <Map
+{
+  /* <Map
             style="mapbox://styles/mapbox/streets-v9"
             containerStyle={{
               height: "100vh",
@@ -87,5 +86,6 @@ export default ImageDetails;
               </Popup>
             ) : (
               <p>Null</p>
-            )} */}
-          </Map>
+            )} */
+}
+// </Map>
