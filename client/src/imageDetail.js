@@ -1,12 +1,19 @@
 import React, { Component } from "react";
-import ReactMapboxGl, { Layer, Feature, Marker, Popup } from "react-mapbox-gl";
+//import ReactMapboxGl, { Layer, Feature, Marker, Popup } from "react-mapbox-gl";
+import { Map } from 'react-leaflet';
+
 import axios from "axios";
 import "./imageDetail.css";
+import { Popup, TileLayer } from "leaflet";
 
-const Map = ReactMapboxGl({
-  accessToken:
-    "pk.eyJ1Ijoid2l6YXJkY29kaW5nIiwiYSI6ImNrYXh6ejVzMDBiN3UyeG5pZHV3ZDl1eGUifQ.3yx5c45P8A1cmOSyycXugQ",
-});
+// const Map = ReactMapboxGl({
+//   accessToken:
+//     "pk.eyJ1Ijoid2l6YXJkY29kaW5nIiwiYSI6ImNrYXh6ejVzMDBiN3UyeG5pZHV3ZDl1eGUifQ.3yx5c45P8A1cmOSyycXugQ",
+// });
+
+const DEFAULT_LANGITUDE = -123;
+const DEFAULT_LATITUDE = 48;
+
 
 class ImageDetails extends Component {
   state = {
@@ -26,10 +33,39 @@ class ImageDetails extends Component {
   }
 
   render() {
+
+    const langitude = this.state.loading ? this.state.data.long : DEFAULT_LANGITUDE;
+    const latitude = this.state.loading ? this.state.data.lat : DEFAULT_LATITUDE;
     return (
       <div>
         {this.state.loading ? (
-          <Map
+          <Map center={[latitude,langitude]} zoom={13}>
+            <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'>
+            </TileLayer>
+            { !this.state.loading ?
+               <div className="loading">loading</div>
+               :
+               <Marker position={[latitude,langitude]} >
+                 <Popup>
+                   You are here!
+                 </Popup>
+               </Marker> 
+            }
+          </Map>
+
+        ) : (
+          <div>Loading...</div>
+        )}
+      </div>
+    );
+  }
+}
+
+export default ImageDetails;
+
+
+
+{/* <Map
             style="mapbox://styles/mapbox/streets-v9"
             containerStyle={{
               height: "100vh",
@@ -51,14 +87,5 @@ class ImageDetails extends Component {
               </Popup>
             ) : (
               <p>Null</p>
-            )}
+            )} */}
           </Map>
-        ) : (
-          <div>Loading...</div>
-        )}
-      </div>
-    );
-  }
-}
-
-export default ImageDetails;
